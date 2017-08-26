@@ -9,7 +9,7 @@ import hashlib
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-# Endpoint
+# End point
 url = "https://secure.payu.com.tr/order/alu/v3"
 
 # PayU Merchant's Secret Key
