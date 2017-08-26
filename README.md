@@ -3,7 +3,7 @@ PayU Turkey ALU v3 Python 3 Sample Code
 
     * This sample code developed on Python 3.4.2
     * This is an unofficial sample code.
-    * Below libraries used when developing and
+    * Below libraries used when developing
         datetime> datetime
         hmac
         hashlib
