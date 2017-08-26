@@ -10,16 +10,15 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 # Endpoint
-#url = "https://secure.payu.com.tr/order/alu/v3"
-url = "https://a1ff569e.ngrok.io"
+url = "https://secure.payu.com.tr/order/alu/v3"
 
 # PayU Merchant's Secret Key
-secret = '9g5^4+54@T8=!6_g+a9+'
+secret = 'SECRET_KEY'
 
 # Array Begin
 array = {
     # PayU Merchant's Merchant ID
-    'MERCHANT': "PYKDMNSZ",
+    'MERCHANT': "OPU_TEST",
     'ORDER_REF': "Gokturk3434",
     'ORDER_DATE': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
     'BACK_REF': "http://a1ff569e.ngrok.io/",
