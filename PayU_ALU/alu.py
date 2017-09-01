@@ -11,16 +11,15 @@ from urllib.request import Request, urlopen
 
 # Endpoint
 url = "https://secure.payu.com.tr/order/alu/v3"
-#url = "https://2ac99a37.ngrok.io/"
 # PayU Merchant's Secret Key
-secret = '9g5^4+54@T8=!6_g+a9+'
+secret = 'SECRET_KEY'
 # Array Begin
 array = {
     # PayU Merchant's Merchant ID
-    'MERCHANT': "PYKDMNSZ",
-    'ORDER_REF':  "Test123",
+    'MERCHANT': "OPU_TEST",
+    'ORDER_REF':  "Test1234",
     'ORDER_DATE': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
-    'BACK_REF': "http://2ac99a37.ngrok.io/",
+    'BACK_REF': "http://2ac99a34.ngrok.io/",
     'ORDER_PNAME[0]': "Ürün İsmi",
     'ORDER_PCODE[0]': "Ürünkodu",
     'ORDER_PINFO[0]': "Ürün Açıklaması",
@@ -42,6 +41,7 @@ array = {
     'BILL_COUNTRYCODE': "TR",
 
 }
+# Initialize the hashstring @param
 hashstring = ''
 # Sorting Array params
 for k, v in sorted(array.items()):
@@ -54,7 +54,6 @@ signature = hmac.new(secret.encode('utf-8'), hashstring.encode('utf-8'), hashlib
 array['ORDER_HASH'] = signature
 print(signature)
 print()
-
 # Sending Request to Endpoint
 request = Request(url, urlencode(array).encode())
 json = urlopen(request).read().decode()
