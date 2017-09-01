@@ -2,26 +2,25 @@
 Project: PayU Turkey ALU Python Sample
 Author: Göktürk Enez
 '''
-# mporting required libraries for sample.
+# Importing required libraries for sample.
 from datetime import datetime
 import hmac
 import hashlib
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-# End point
+# Endpoint
 url = "https://secure.payu.com.tr/order/alu/v3"
-
+#url = "https://2ac99a37.ngrok.io/"
 # PayU Merchant's Secret Key
-secret = 'SECRET_KEY'
-
+secret = '9g5^4+54@T8=!6_g+a9+'
 # Array Begin
 array = {
     # PayU Merchant's Merchant ID
-    'MERCHANT': "OPU_TEST",
-    'ORDER_REF': "Gokturk3434",
+    'MERCHANT': "PYKDMNSZ",
+    'ORDER_REF':  "Test123",
     'ORDER_DATE': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
-    'BACK_REF': "http://a1ff569e.ngrok.io/",
+    'BACK_REF': "http://2ac99a37.ngrok.io/",
     'ORDER_PNAME[0]': "Ürün İsmi",
     'ORDER_PCODE[0]': "Ürünkodu",
     'ORDER_PINFO[0]': "Ürün Açıklaması",
@@ -43,11 +42,12 @@ array = {
     'BILL_COUNTRYCODE': "TR",
 
 }
+hashstring = ''
 # Sorting Array params
 for k, v in sorted(array.items()):
-    # Adding the length of each field value at the beginning of field value
-    hashstring = str(len(v)) + v
-    print(hashstring)
+# Adding the length of each field value at the beginning of field value
+    hashstring += str(len(v)) + str(v)
+print(hashstring)
 # Calculating ORDER_HASH
 signature = hmac.new(secret.encode('utf-8'), hashstring.encode('utf-8'), hashlib.md5).hexdigest()
 # Adding ORDER_HASH param to dictionary
