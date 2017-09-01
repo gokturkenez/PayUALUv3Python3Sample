@@ -12,14 +12,15 @@ from urllib.request import Request, urlopen
 
 # Endpoint
 url = "https://secure.payu.com.tr/order/alu/v3"
+#url = "https://2ac99a37.ngrok.io/"
 
 # PayU Merchant's Secret Key
-secret = 'SECRET_KEY'
+secret = '9g5^4+54@T8=!6_g+a9+'
 
 # Request @params Begin
 array = {
     # PayU Merchant's Merchant ID
-    'MERCHANT': "OPU_TEST",
+    'MERCHANT': "PYKDMNSZ",
     'ORDER_DATE': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
     'BACK_REF': "http://2ac99a34.ngrok.io/",
     'ORDER_PNAME[0]': "Ürün İsmi",
@@ -43,8 +44,12 @@ array = {
     'BILL_COUNTRYCODE': "TR",
 
 }
+# Random number generation function for ORDER_REF @param
 refno = str(random.randint(1, 100000))
+
+# Adding ORDER_REF @param to request array
 array['ORDER_REF'] = refno
+
 # Initializing the hashstring @param
 hashstring = ''
 
@@ -58,7 +63,7 @@ print(hashstring)
 # Calculating ORDER_HASH
 signature = hmac.new(secret.encode('utf-8'), hashstring.encode('utf-8'), hashlib.md5).hexdigest()
 
-# Adding ORDER_HASH param to dictionary
+# Adding ORDER_HASH @param to request array
 array['ORDER_HASH'] = signature
 
 print(signature)
