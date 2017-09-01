@@ -4,6 +4,7 @@ Author: Göktürk Enez
 '''
 # Importing required libraries.
 from datetime import datetime
+import random
 import hmac
 import hashlib
 from urllib.parse import urlencode
@@ -19,7 +20,6 @@ secret = 'SECRET_KEY'
 array = {
     # PayU Merchant's Merchant ID
     'MERCHANT': "OPU_TEST",
-    'ORDER_REF':  "Test12345",
     'ORDER_DATE': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
     'BACK_REF': "http://2ac99a34.ngrok.io/",
     'ORDER_PNAME[0]': "Ürün İsmi",
@@ -43,7 +43,8 @@ array = {
     'BILL_COUNTRYCODE': "TR",
 
 }
-
+refno = str(random.randint(1, 100000))
+array['ORDER_REF'] = refno
 # Initializing the hashstring @param
 hashstring = ''
 

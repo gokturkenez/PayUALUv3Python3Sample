@@ -17,3 +17,9 @@ PayU Turkey ALU v3 Python 3 Sample Code v1.0
 PayU Turkey ALU v3 Python 3 Sample Code v1.1
 
     * Hashstring creating issue fixed.
+
+PayU Turkey ALU v3 Python 3 Sample Code v1.2
+    
+    * Random number generation function added for ORDER_REF @param
+    * Below library added for random ORDER_REF number generation.
+        random
